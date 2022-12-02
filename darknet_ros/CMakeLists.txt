@@ -7,7 +7,6 @@ set(CMAKE_C_FLAGS "-Wall -Wno-unused-result -Wno-unknown-pragmas -Wno-unused-var
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Define path of darknet folder here.
-# Define path of darknet folder here.
 set(DARKNET_PATH "${CMAKE_SOURCE_DIR}/utbots_vision/darknet_ros/darknet/")
 message(STATUS "Darknet path dir = ${DARKNET_PATH}")
 add_definitions(-DDARKNET_FILE_PATH="${DARKNET_PATH}")
@@ -22,8 +21,8 @@ if (CUDA_FOUND)
     CUDA_NVCC_FLAGS
     ${CUDA_NVCC_FLAGS};
     -O3
-    -gencode arch=compute_30,code=sm_30
-    -gencode arch=compute_35,code=sm_35
+#    -gencode arch=compute_30,code=sm_30
+#    -gencode arch=compute_35,code=sm_35
     -gencode arch=compute_50,code=[sm_50,compute_50]
     -gencode arch=compute_52,code=[sm_52,compute_52]
     -gencode arch=compute_61,code=sm_61
