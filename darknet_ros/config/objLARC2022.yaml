@@ -1,0 +1,31 @@
+yolo_model:
+
+  config_file:
+    name: objLARC2022.cfg
+  weight_file:
+    name: objLARC2022.weights
+  threshold:
+    value: 0.3
+  detection_classes:
+    names:
+      - Fruits/Apple
+      - Fruits/Banana
+      - Fruits/Banana Bunch
+      - Snacks/Cereal Bag
+      - Cleaning supplies/Cloth
+      - Drinks/Coca-cola Bottle
+      - Drinks/Coconut Water
+      - Snacks/Cookies
+      - Cleaning supplies/Detergent
+      - Drinks/Guaraná Bottle
+      - Drinks/Ice Tea
+      - Fruits/Kiwi
+      - Pantry items/Mustard
+      - Fruits/Orange
+      - Snacks/Potato Chips
+      - Pantry items/Sardines
+      - Cleaning supplies/Sponge
+      - Pantry items/Tomato Sauce
+      - Drinks/Tonic Water
+      - Drinks/Water Bottle
+      - Pantry items/Worcestershire Sauce
