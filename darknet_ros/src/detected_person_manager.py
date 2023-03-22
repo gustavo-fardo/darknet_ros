@@ -98,50 +98,34 @@ class DetectedPersonManager():
             
     def callback_bBoxes(self, msg):
         self.msg_bBoxes = msg
+        person_list_tmp = []
         for bbox in self.msg_bBoxes.bounding_boxes:
             coordinates = self.extract_coordinates(bbox)
             repeated_person = False
-
-            for person in self.person_list:
-                if(repeated_person == False):
-                    # if(person.get_match() == False):
-                        repeated_person = self.compareROI(coordinates, person.getROI())
-                        person.set_match(repeated_person)
-                        rospy.loginfo(repeated_person)
-                        rospy.loginfo(len(self.person_list))
-                else:
-                    break
-
-            if (repeated_person == False):
-                self.person_list.append(Person(coordinates, self.cv_img))
-
+            if(len(self.person_list) > 0):
+                for person in self.person_list:
+                    if(self.compareROI(coordinates, person.getROI()) == True):
+                        repeated_person = True
+                        person.set_match(True)
+                        person.update_coordinates(coordinates)
+                        person_list_tmp.append(person)
+                        rospy.loginfo("Updated and added")
+                    if(repeated_person == True):
+                        break
+                    else:
+                        person_list_tmp.append(Person(coordinates, self.cv_img))
+                        rospy.loginfo("Created and added")           
+            else:
+                person_list_tmp.append(Person(coordinates, self.cv_img))
+                rospy.loginfo("Created and added")  
         for person in self.person_list:
-            if(person.get_match() == False):
-                self.person_list.remove(person)
+            if(person.get_match == False):
                 del person
-        
-        # for bbox in msg.bounding_boxes:
-        #     if(bbox.Class == "person"):
-        #         coordinates = self.extract_coordinates(bbox)
-        #         same_person = False
+            else:
+                person.set_match(False)
+        self.person_list = person_list_tmp
 
-        #         for person in self.person_list:
-        #             # rospy.loginfo(person.get_match())
-        #             if(same_person == False and person.get_match() == False):
-        #                 same_person = self.compareROI(coordinates, person.getROI())
-        #                 person.set_match(same_person)
-        #                 rospy.loginfo(same_person)
-        #                 rospy.loginfo(len(self.person_list))
-
-        #         rospy.loginfo(same_person)
-        #         if(same_person == False):
-        #             self.person_list.append(Person(coordinates, self.cv_img))
-
-        # for person in self.person_list:
-        #     if(person.get_match() == False):
-        #         self.person_list.remove(person)
-        #         del person
-        # self.new_detection = True
+        self.new_detection = True
 
     def extract_coordinates(self, msg):
         return [msg.xmin, msg.ymin, msg.xmax, msg.ymax]
