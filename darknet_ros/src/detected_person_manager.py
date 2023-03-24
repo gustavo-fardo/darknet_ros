@@ -7,6 +7,8 @@ import cv2
 from cv_bridge import CvBridge
 from darknet_ros_msgs.msg import BoundingBoxes, BoundingBox
 
+enable_TRACKING = False
+
 class Person():
     def __init__(self, coordinates, rgb_img):
         self.label = self.generate_label()
@@ -99,32 +101,37 @@ class DetectedPersonManager():
     def callback_bBoxes(self, msg):
         self.msg_bBoxes = msg
         person_list_tmp = []
+
         for bbox in self.msg_bBoxes.bounding_boxes:
             coordinates = self.extract_coordinates(bbox)
-            repeated_person = False
-            if(len(self.person_list) > 0):
-                for person in self.person_list:
-                    if(self.compareROI(coordinates, person.getROI()) == True):
-                        repeated_person = True
-                        person.set_match(True)
-                        person.update_coordinates(coordinates)
-                        person_list_tmp.append(person)
-                        # rospy.loginfo("Updated and added")
-                    if(repeated_person == True):
-                        break
-                    else:
-                        person_list_tmp.append(Person(coordinates, self.cv_img))
-                        # rospy.loginfo("Created and added")           
+            if(enable_TRACKING == True):
+                repeated_person = False
+                if(len(self.person_list) > 0):
+                    for person in self.person_list:
+                        if(self.compareROI(coordinates, person.getROI()) == True):
+                            repeated_person = True
+                            person.set_match(True)
+                            person.update_coordinates(coordinates)
+                            person_list_tmp.append(person)
+                            # rospy.loginfo("Updated and added")
+                        if(repeated_person == True):
+                            break
+                        else:
+                            person_list_tmp.append(Person(coordinates, self.cv_img))
+                            # rospy.loginfo("Created and added")           
+                else:
+                    person_list_tmp.append(Person(coordinates, self.cv_img))
+                    # rospy.loginfo("Created and added")  
             else:
                 person_list_tmp.append(Person(coordinates, self.cv_img))
-                # rospy.loginfo("Created and added")  
+
         for person in self.person_list:
             if(person.get_match == False):
                 del person
             else:
                 person.set_match(False)
-        self.person_list = person_list_tmp
 
+        self.person_list = person_list_tmp
         self.new_detection = True
 
     def extract_coordinates(self, msg):
