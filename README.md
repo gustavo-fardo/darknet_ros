@@ -1,3 +1,25 @@
+# darknet_ros
+- **Description**
+
+    Darknet/YOLO + ROS
+   
+- **Dependencies**
+
+    This software is built on the Robotic Operating System ([ROS]), which needs to be [installed](http://wiki.ros.org) first. Additionally, YOLO for ROS depends on following software:
+    - [OpenCV](http://opencv.org/) (computer vision library),
+    - [boost](http://www.boost.org/) (c++ library),
+    - [freenect_launch](https://github.com/ros-drivers/freenect_stack) (kinect camera package)
+
+- **Running** 
+   Detailed information can be found [below](#overview)
+    - **Webcam**
+        ```bash
+        roslaunch darknet_ros darknet_ros.launch
+        ```
+    - **Kinect V1**
+        ```bash
+        roslaunch darknet_ros kinect.launch
+                    
 # YOLO ROS: Real-Time Object Detection for ROS
 
 ## Overview
