@@ -1,7 +1,7 @@
 # darknet_ros
 - **Description**
 
-    Darknet/YOLO + ROS
+    Darknet/YOLOv3 + ROS
    
 - **Dependencies**
 
@@ -11,7 +11,7 @@
     - [freenect_launch](https://github.com/ros-drivers/freenect_stack) (kinect camera package)
 
 - **Running** 
-   Detailed information can be found [below](#overview)
+   Detailed information can be found [below](#yolo-ros-real-time-object-detection-for-ros)
     - **Webcam**
         ```bash
         roslaunch darknet_ros darknet_ros.launch
