@@ -3,8 +3,9 @@
 <launch>
   
   <!-- Kinect v1 camera -->
-  <include file="$(find freenect_launch)/launch/freenect.launch"/>
-  <node name="img_convert" pkg="img_converter" type="img_converter"/>	
+  <!--<include file="$(find freenect_launch)/launch/freenect.launch"/>
+  <node name="img_convert" pkg="img_converter" type="img_converter"/>
+  -->	
   
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
