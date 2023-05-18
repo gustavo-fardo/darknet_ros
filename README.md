@@ -1,7 +1,7 @@
 # darknet_ros
 - **Description**
 
-    Darknet/YOLOv3 + ROS
+    Darknet/YOLO + ROS
    
 - **Dependencies**
 
