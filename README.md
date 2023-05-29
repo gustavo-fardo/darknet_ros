@@ -20,6 +20,7 @@
     - **Kinect V1**
         ```bash
         roslaunch darknet_ros kinect.launch
+        ```
                     
 # YOLO ROS: Real-Time Object Detection for ROS
 
