@@ -23,6 +23,7 @@
         roslaunch darknet_ros kinect.launch
         ```
    Running with objLARC2022.weights, the objects training for the 2022 LARC edition:
+    - **Kinect V1**
         ```bash
         roslaunch darknet_ros objLARC2022.launch
         ```
