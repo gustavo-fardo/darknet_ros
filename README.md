@@ -12,7 +12,8 @@
 
 - **Running** 
 
-   Detailed information can be found [below](#yolo-ros-real-time-object-detection-for-ros)
+   Detailed information can be found [below](#yolo-ros-real-time-object-detection-for-ros).
+   
    Running with yolov3.weights:
     - **Webcam**
         ```bash
