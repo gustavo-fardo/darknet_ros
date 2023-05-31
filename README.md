@@ -13,6 +13,7 @@
 - **Running** 
 
    Detailed information can be found [below](#yolo-ros-real-time-object-detection-for-ros)
+   Running with yolov3.weights:
     - **Webcam**
         ```bash
         roslaunch darknet_ros darknet_ros.launch
@@ -20,6 +21,10 @@
     - **Kinect V1**
         ```bash
         roslaunch darknet_ros kinect.launch
+        ```
+   Running with objLARC2022.weights, the objects training for the 2022 LARC edition:
+        ```bash
+        roslaunch darknet_ros objLARC2022.launch
         ```
                     
 # YOLO ROS: Real-Time Object Detection for ROS
