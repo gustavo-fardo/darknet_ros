@@ -2,10 +2,9 @@
 
 <launch>
   
-  <!-- Kinect v1 camera -->
-  <!--<include file="$(find freenect_launch)/launch/freenect.launch"/>
+  <!-- Converts from bayer_rgb to rgb acceptable by darknet_ros -->
+  <include file="$(find freenect_launch)/launch/freenect.launch"/>
   <node name="img_convert" pkg="img_converter" type="img_converter"/>
-  -->	
   
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
@@ -17,7 +16,7 @@
 
   <!-- ROS and network parameter files -->
   <arg name="ros_param_file"             default="$(find darknet_ros)/config/ros.yaml"/>
-  <arg name="network_param_file"         default="$(find darknet_ros)/config/yolov2-tiny.yaml"/>
+  <arg name="network_param_file"         default="$(find darknet_ros)/config/yolov3.yaml"/>
 
   <!-- Load parameters -->
   <rosparam command="load" ns="darknet_ros" file="$(arg ros_param_file)"/>
