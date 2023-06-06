@@ -3,8 +3,7 @@
 <launch>
   
   <!-- Converts from bayer_rgb to rgb acceptable by darknet_ros -->
-  <include file="$(find freenect_launch)/launch/freenect.launch"/>
-  <node name="img_convert" pkg="img_converter" type="img_converter"/>
+  <node name="img_convert" pkg="vision_tools" type="img_converter"/>
   
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
