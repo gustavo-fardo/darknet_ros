@@ -28,6 +28,11 @@
         ```bash
         roslaunch darknet_ros objLARC2022.launch
         ```
+   For our specific use with Intel Nuc as the master and a Jetson Nano as the slave, the following launcher runs YOLO in Nano for graphic acceleration:
+    - **Kinect V1**
+        ```bash
+        roslaunch darknet_ros darknet_ros_jetson_nano.launch
+        ``` 
                     
 # YOLO ROS: Real-Time Object Detection for ROS
 
